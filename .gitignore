@@ -1,0 +1,16 @@
+# User-specific paths and generated configuration
+config/pipeline_config.json
+config/pipeline_config.tcl
+
+# Simulation inputs and generated results
+data/
+results/
+figures/
+
+# MATLAB
+*.asv
+*.m~
+
+# Python
+__pycache__/
+*.py[cod]

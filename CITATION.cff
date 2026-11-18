@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it using the metadata below."
+type: software
+title: "VMD Protein Distance Analysis and MATLAB Figures"
+authors:
+  - family-names: Allen
+    given-names: Elspeth
+  - family-names: Abrol
+    given-names: Ravinder

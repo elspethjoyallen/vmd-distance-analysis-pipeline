@@ -1,0 +1,144 @@
+{
+  "path_base_dir": "/path/to/your/analysis_working_directory",
+  "output_dir": "results",
+  "histogram_bins": 100,
+  "write_replica_histograms": false,
+  "progress_interval": 500,
+  "systems": [
+    {
+      "id": "5ht1b_apo_active",
+      "display_name": "5-HT1B Apo Active",
+      "directory": "../apo/active",
+      "prefix": "5ht1b_apo_active",
+      "topology": "5ht1b_apo_active_md.prmtop",
+      "steps": ["7", "8", "9", "10"],
+      "replicas": ["a", "b", "c", "d"],
+      "parts": ["", "2"],
+      "stride": 100,
+      "template": "{prefix}_step{step}{replica}{part}.nc",
+      "frame_interval_ns": 0.0
+    },
+    {
+      "id": "5ht1b_apo_inactive",
+      "display_name": "5-HT1B Apo Inactive",
+      "directory": "../apo/inactive",
+      "prefix": "5ht1b_apo_inactive",
+      "topology": "5ht1b_apo_inactive_md.prmtop",
+      "steps": ["7", "8", "9", "10"],
+      "replicas": ["a", "b", "c", "d"],
+      "parts": ["", "2"],
+      "stride": 100,
+      "template": "{prefix}_step{step}{replica}{part}.nc",
+      "frame_interval_ns": 0.0
+    },
+    {
+      "id": "5ht1b_holo_inactive",
+      "display_name": "5-HT1B Holo Inactive",
+      "directory": "../holo/inactive",
+      "prefix": "5ht1b_holo_inactive",
+      "topology": "5ht1b_holo_inactive_md.prmtop",
+      "steps": ["7", "8", "9", "10"],
+      "replicas": ["a", "b", "c", "d"],
+      "parts": ["", "2"],
+      "stride": 100,
+      "template": "{prefix}_step{step}{replica}{part}.nc",
+      "frame_interval_ns": 0.0
+    },
+    {
+      "id": "5ht1b_holo_active",
+      "display_name": "5-HT1B Holo Active",
+      "directory": "../holo/active",
+      "prefix": "5ht1b_holo_active",
+      "topology": "5ht1b_holo_active_md.prmtop",
+      "steps": ["7", "8", "9", "10"],
+      "replicas": ["a", "b", "c", "d"],
+      "parts": ["", "2"],
+      "stride": 100,
+      "template": "{prefix}_step{step}{replica}{part}.nc",
+      "frame_interval_ns": 0.0
+    }
+  ],
+  "signatures": [
+    {
+      "id": "tm3_tm6_cb",
+      "label": "TM3-TM6 CB distance",
+      "mode": "atom_distance",
+      "selection_1": "protein and resid 147 and name CB",
+      "selection_2": "protein and resid 309 and name CB",
+      "systems": [
+        "5ht1b_apo_active",
+        "5ht1b_apo_inactive",
+        "5ht1b_holo_inactive",
+        "5ht1b_holo_active"
+      ]
+    },
+    {
+      "id": "tm3_tm6_sidechain_com",
+      "label": "TM3-TM6 sidechain COM distance",
+      "mode": "com_distance",
+      "selection_1": "protein and resid 147 and sidechain",
+      "selection_2": "protein and resid 309 and sidechain",
+      "systems": [
+        "5ht1b_apo_active",
+        "5ht1b_apo_inactive",
+        "5ht1b_holo_inactive",
+        "5ht1b_holo_active"
+      ]
+    }
+  ],
+  "references": [
+    {
+      "label": "active",
+      "path": "../structures/5ht1b_active_start.pdb",
+      "systems": [
+        "5ht1b_apo_active",
+        "5ht1b_apo_inactive",
+        "5ht1b_holo_inactive",
+        "5ht1b_holo_active"
+      ]
+    },
+    {
+      "label": "inactive",
+      "path": "../structures/5ht1b_inactive_start.pdb",
+      "systems": [
+        "5ht1b_apo_active",
+        "5ht1b_apo_inactive",
+        "5ht1b_holo_inactive",
+        "5ht1b_holo_active"
+      ]
+    }
+  ],
+  "figures": [
+    {
+      "title": "Inactive 5-HT1B TM3-TM6 CB distance",
+      "rows": 2,
+      "columns": 2,
+      "panels": [
+        {
+          "system_id": "5ht1b_apo_inactive",
+          "signature_id": "tm3_tm6_cb",
+          "kind": "trajectory",
+          "show_references": true
+        },
+        {
+          "system_id": "5ht1b_apo_inactive",
+          "signature_id": "tm3_tm6_cb",
+          "kind": "histogram",
+          "show_references": true
+        },
+        {
+          "system_id": "5ht1b_holo_inactive",
+          "signature_id": "tm3_tm6_cb",
+          "kind": "trajectory",
+          "show_references": true
+        },
+        {
+          "system_id": "5ht1b_holo_inactive",
+          "signature_id": "tm3_tm6_cb",
+          "kind": "histogram",
+          "show_references": true
+        }
+      ]
+    }
+  ]
+}
